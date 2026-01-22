@@ -1,0 +1,421 @@
+/* Timesheet page typography bump */
+.timesheet-page{
+  font-size: 1.05rem;
+}
+
+/* Timesheet submit button emphasis */
+.timesheet-page .submit-btn{
+  min-height: 56px;
+}
+/* PCC Brand Theme (v14) */
+:root{
+  --pcc-black:#0b0b0d;
+  --pcc-charcoal:#17171b;
+  --pcc-grey:#8b8b92;
+  --pcc-light:#f6f6f7;
+  --pcc-orange:#f47a1f;
+  --pcc-orange-dark:#d86212;
+}
+
+html, body { padding: 0; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: #eef1f7; color: #111; }
+* { box-sizing: border-box; }
+a { color: #0b62d6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { cursor: pointer; }
+input, select, textarea { font-size: 16px; font-family: inherit; }
+
+.page { max-width: 1100px; margin: 28px auto; padding: 16px; }
+.topbar { display:flex; justify-content: space-between; align-items:center; gap: 10px; margin-bottom: 14px; }
+
+.h1 { font-size: 22px; margin: 0 0 6px 0; letter-spacing: .2px; }
+.subtle { margin: 0; opacity: .72; }
+.stack { display:flex; flex-direction: column; gap: 12px; }
+.row { display:flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.card { border: 1px solid rgba(0,0,0,.08); border-radius: 16px; padding: 14px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.07); }
+.card-lg { max-width: 560px; margin: 0 auto; padding: 18px; }
+
+.field { display:flex; flex-direction: column; gap: 6px; }
+.label { font-weight: 750; font-size: 13px; opacity: .85; }
+.input, select, textarea {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  outline: none;
+}
+
+/* Select elements can render with clipped text on some browsers when padding is too tall */
+select.input{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 1.2;
+}
+.input:focus, select:focus, textarea:focus { border-color: rgba(11,98,214,.6); box-shadow: 0 0 0 4px rgba(11,98,214,.12); }
+.input-pin { font-size: 24px; letter-spacing: 8px; text-align: center; font-weight: 800; }
+
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 800;
+  background: var(--pcc-orange);
+  color: #111;
+  border-color: var(--pcc-orange);
+  gap: 8px;
+  text-decoration: none !important;
+}
+.btn, button { transition: filter .12s ease, transform .05s ease; }
+.btn:hover:not(:disabled), button:hover:not(:disabled) { filter: brightness(.95); }
+.btn:active:not(:disabled), button:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.btn-primary { background: var(--pcc-orange); color: #111; border-color: var(--pcc-orange); }
+
+/* Per request: keep all buttons orange (including "danger" / "ghost") */
+.btn-danger { background: var(--pcc-orange); color: #111; border-color: var(--pcc-orange); }
+.btn-ghost { background: var(--pcc-orange); color: #111; border-color: var(--pcc-orange); }
+.btn-ghost:hover:not(:disabled) { background: var(--pcc-orange-dark); border-color: var(--pcc-orange-dark); }
+.btn-ghost:active:not(:disabled) { background: var(--pcc-orange-dark); border-color: var(--pcc-orange-dark); }
+
+.alert { padding: 10px 12px; border-radius: 12px; font-weight: 700; }
+.alert-bad { color: #8a1f1f; background: rgba(220, 20, 60, .10); border: 1px solid rgba(220, 20, 60, .25); }
+
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid rgba(0,0,0,.06); padding: 10px; text-align:left; vertical-align: top; }
+.table th { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; opacity: .7; }
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table { min-width: 920px; }
+.th-center { text-align: center; }
+.td-center { text-align: center; }
+.td-num { text-align: center; font-variant-numeric: tabular-nums; }
+.muted { opacity: .7; }
+.bad { color: crimson; }
+
+@media (max-width: 720px) {
+  .page { margin: 12px auto; padding: 12px; }
+  .card-lg { max-width: 100%; }
+  /* Make primary actions easier to tap on mobile */
+  .btn { padding: 14px 16px; border-radius: 14px; }
+}
+
+
+/* Mobile/layout fixes */
+label { min-width: 0; }
+input, select, textarea { min-width: 0; max-width: 100%; }
+input[type="date"] { min-width: 0; }
+
+/* Normalize control heights for iOS select/input alignment */
+select, input[type="date"], input[inputmode="decimal"] { height: 44px; }
+
+/* Responsive equipment/material grids on mobile */
+.equip-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+.equip-hours { }
+.material-grid { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 10px; }
+.material-loads { }
+
+/* Modal materials layout (My Timesheets edit modal)
+   Desktop: Material + Loads + Remove on one row, Notes underneath.
+   Mobile: stack everything full-width.
+*/
+.materials-item { min-width: 0; }
+.materials-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 120px;
+  gap: 10px;
+  align-items: end;
+}
+.materials-material { min-width: 0; }
+.materials-loads { min-width: 0; }
+.materials-remove { height: 44px; }
+
+@media (max-width: 720px) {
+  .materials-top { grid-template-columns: 1fr; }
+  .materials-remove { width: 100%; }
+}
+
+@media (max-width: 720px) {
+  .equip-grid { grid-template-columns: 1fr 1fr; }
+  .equip-hours { grid-column: 1 / -1; }
+  .material-grid { grid-template-columns: 1fr 1fr; }
+  .material-loads { grid-column: 1 / -1; }
+  .btn-compact { padding: 14px 16px; }
+}
+
+/* Page header with logo */
+.page-header { display:flex; align-items:center; gap: 12px; margin-bottom: 12px; }
+.page-logo { width: 44px; height: 44px; object-fit: contain; }
+@media (max-width: 720px) { .page-logo { width: 36px; height: 36px; } }
+
+/* Timesheet top grid (mobile-safe) */
+.ts-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.ts-grid > label { min-width: 0; }
+.ts-label { font-weight: 750; font-size: 13px; opacity: .85; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 420px) {
+  /* Extremely small screens: avoid any overflow by stacking */
+  .ts-grid { grid-template-columns: 1fr; }
+}
+
+/* === Mobile: Materials dropdown full width === */
+@media (max-width: 768px) {
+  .materials-row,
+  .materials-row .field {
+    grid-template-columns: 1fr !important;
+  }
+
+  .materials-row select {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* === Mobile: Admin date filters full width === */
+@media (max-width: 768px) {
+  .admin-filters {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-filters input[type="date"] {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* === FINAL iOS Safari date overflow fix (robust) === */
+input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.field,
+.field > div,
+.field > label,
+.ts-row,
+.ts-row > div,
+.ts-grid,
+.ts-grid > div {
+  min-width: 0;
+}
+/* === Mobile: make materials dropdown same width as Job Type === */
+@media (max-width: 768px) {
+  .materials-row select,
+  .materials-row .field select {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* Admin table: keep action buttons side-by-side and give the column more room */
+.th-actions, .td-actions { width: 240px; }
+.td-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.td-actions .btn { white-space: nowrap; }
+
+/* Make date inputs usable on mobile (iOS/Android) inside flex rows */
+/* Admin: iOS Safari can collapse <input type="date"> to a tiny width unless an explicit width is set. */
+.dateInput {
+  width: 170px;
+  min-width: 170px;
+  flex: 1 1 170px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 720px) {
+  /* On mobile, make the date controls full-width and easy to tap */
+  .dateInput {
+    width: 100%;
+  }
+}
+
+
+/* PCC banner header */
+.pccBannerWrap{width:100%; background:var(--pcc-black);}
+.pccBanner{width:100%; height:auto; display:block; max-height:220px; object-fit:cover;}
+.pccAccentLine{height:4px; width:100%; background:var(--pcc-orange);}
+
+/* Theme: links & buttons */
+a{color:var(--pcc-orange);}
+a:hover{color:var(--pcc-orange-dark);}
+
+/* Primary button: match PCC orange */
+button, .button, .btn{}
+
+/* Table row hover (admin tables, including Employees) */
+table tbody tr:hover { background: rgba(0,0,0,.03); }
+button.primary, .primary, .btnPrimary, .btn-primary{
+  background:var(--pcc-orange) !important;
+  border-color:var(--pcc-orange) !important;
+  color:#111 !important;
+}
+button.primary:hover, .primary:hover, .btnPrimary:hover, .btn-primary:hover{
+  background:var(--pcc-orange-dark) !important;
+  border-color:var(--pcc-orange-dark) !important;
+}
+
+/* Subtle card border & headings */
+.card, .panel, .box{
+  border-color: rgba(255,255,255,0.08);
+}
+h1,h2,h3{letter-spacing:0.2px;}
+
+
+/* Admin tabs (segmented header tabs like your screenshot) */
+.tabbar{display:flex;}
+.tab{display:inline-flex;}
+.tabIcon{line-height:0;}
+.tabLabel{display:block;}
+
+/* Admin (Employees page): keep top-right action buttons inside the card on mobile */
+.admin-action-row{flex-wrap:wrap; justify-content:flex-end;}
+@media (max-width: 520px){
+  .admin-action-row{width:100%; justify-content:stretch;}
+  .admin-action-row > button{width:100%;}
+}
+
+/* Admin edit timesheet modal
+   IMPORTANT: do NOT set overflow on the modal itself.
+   Native <select> dropdown menus get clipped when any ancestor has overflow:auto/hidden.
+   We scroll on the backdrop instead (see .modal-backdrop). */
+.admin-edit-modal{
+  max-height: none;
+  overflow: visible;
+}
+
+/* Modal */
+.modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,0.65); display:flex; align-items:flex-start; justify-content:center; padding:16px; z-index:50; overflow:auto; -webkit-overflow-scrolling: touch;}
+.modal{
+  width:min(920px, 100%);
+  background:var(--pcc-charcoal);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:14px;
+  padding:14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  /* Ensure modal text is readable on the dark background */
+  color: rgba(255,255,255,0.92);
+  /* Let the BACKDROP scroll so native select dropdowns are not clipped */
+  max-height: none;
+  overflow: visible;
+}
+
+/* Inputs inside the modal should remain light-background with dark text */
+.modal .input,
+.modal select,
+.modal textarea{
+  background: #fff;
+  color: #111;
+}
+
+.modal .label{ color: rgba(255,255,255,0.85); }
+.modal .muted{ color: rgba(255,255,255,0.70); }
+
+
+
+/* Attached segmented tabs bar */
+.tabcard .tabbar{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid rgba(0,0,0,.12);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #e9eeec;
+  margin: 0;
+}
+
+.tabcard .tab{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 6px;
+  padding: 14px 10px;
+  background: #e9eeec;
+  color: rgba(0,0,0,.50);
+  text-decoration:none;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 11px;
+  border-right: 1px solid rgba(0,0,0,.12);
+  position: relative;
+  transition: background 120ms ease, transform 120ms ease, color 120ms ease;
+}
+.tabcard .tab:last-child{ border-right: none; }
+.tabcard .tab:hover{ background: rgba(255,255,255,0.45); }
+.tabcard .tab:active{ transform: translateY(1px); }
+
+.tabcard .tabIcon{ opacity: .9; }
+
+.tabcard .tab-active{
+  background: #f7faf9;
+  color: #111;
+}
+.tabcard .tab-active .tabIcon{ opacity: 1; }
+.tabcard .tab-active::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background: var(--pcc-orange);
+}
+
+/* Make the card body visually attach to the segmented tab bar */
+.tabcard .tabcard-body{
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Admin: cleaner layout (filters row + actions row) */
+.adminFilters{
+  display: grid;
+  grid-template-columns: 170px 170px 140px minmax(220px, 1fr) minmax(260px, 1.2fr);
+  gap: 10px;
+  align-items: end;
+}
+.adminFiltersBtn{ display:flex; align-items: end; }
+.adminActions{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (max-width: 980px){
+  .adminFilters{ grid-template-columns: 1fr 1fr; }
+  .adminFiltersBtn{ grid-column: 1 / -1; }
+}
+
+/* My Timesheets: keep action buttons inside the card on mobile */
+.my-entry-actions{ display:flex; gap:8px; align-items:center; justify-content:flex-end; flex-wrap:wrap; }
+.my-entry-hours{ font-weight:900; white-space:nowrap; }
+
+@media (max-width: 520px){
+  .my-entry-actions{ flex-direction:column; align-items:stretch; }
+  .my-entry-actions .btn{ width:100%; }
+  .my-entry-hours{ align-self:flex-end; }
+}
+
+
+/* Timesheet field labels match equipment subheader size */
+.timesheet-page label{font-size:0.9rem; font-weight:600;}
